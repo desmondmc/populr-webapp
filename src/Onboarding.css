@@ -1,0 +1,36 @@
+.Onboarding {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    top: 50%;
+}
+
+.OnboardingContainer {
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    height: 300px;
+}
+
+button {
+    background-color:rgba(0,0,0,0.0); /* Transparent */
+    border: none;
+    color: #fafafa;
+    padding: 15px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "helvetica neue", sans-serif;
+}
+
+input {
+    color: #fafafa;
+    text-align: center;
+    font-size: 16px;
+    font-family: "helvetica neue", sans-serif;
+    background-color: rgba(0,0,0,0.0); /* Transparent */
+    padding: 8px 8px;
+    margin: 8px 8px;
+    border: none;
+}
