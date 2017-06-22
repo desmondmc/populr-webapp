@@ -4,17 +4,9 @@
 
 import React, { Component } from 'react';
 import { API } from './networking/API'
-import { updateToken } from './state/Action'
-import { store } from './index'
 import './Onboarding.css';
 
 class Onboarding extends Component {
-    constructor() {
-        super();
-        this.state = {
-            data: "",
-        };
-    }
 
     render() {
         console.log("Rendering!")
@@ -43,24 +35,17 @@ class Onboarding extends Component {
     }
 
     login() {
-        const action = updateToken("Token")
-        store.dispatch(action)
-        
         const username = this.refs.username.value
         const password = this.refs.password.value
 
-        API.login(username, password, (response) => {
-            alert(response);
-        })
+        API.login(username, password)
     }
 
     register() {
         const username = this.refs.username.value
         const password = this.refs.password.value
 
-        API.register(username, password, (response) => {
-            alert(response);
-        })
+        API.register(username, password)
     }
 }
 

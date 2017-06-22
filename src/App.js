@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Onboarding from './Onboarding';
+import LoginContainer from './containers/LoginContainer'
 import './App.css';
 
 class App extends Component {
-  render() {
-  	console.log("Rerendering app")
-    return (
-        <Onboarding />
-    );
-  }
+	render() {
+  		console.log("Rerendering app")
+    	return (
+        	<LoginContainer />
+    	);
+  	}
 }
 
 export default App;
