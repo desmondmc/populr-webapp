@@ -3,9 +3,10 @@
  */
 
 import React, { Component } from 'react';
+import { API } from './networking/API'
+import { updateToken } from './state/Action'
+import { store } from './index'
 import './Onboarding.css';
-
-const API = require('./networking/API.js');
 
 class Onboarding extends Component {
     constructor() {
@@ -16,6 +17,7 @@ class Onboarding extends Component {
     }
 
     render() {
+        console.log("Rendering!")
         return (
         <div className="OnboardingContainer">
             <div className="Onboarding">
@@ -41,7 +43,9 @@ class Onboarding extends Component {
     }
 
     login() {
-        console.log("Here!")
+        const action = updateToken("Token")
+        store.dispatch(action)
+        
         const username = this.refs.username.value
         const password = this.refs.password.value
 
