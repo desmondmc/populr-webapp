@@ -6,7 +6,7 @@ const mapStateToProps = state => {
 }
 
 const LoginContainer = connect(
-  mapStateToProps
+	mapStateToProps
 )(Login)
 
 export default LoginContainer

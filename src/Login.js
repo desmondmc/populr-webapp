@@ -1,6 +1,5 @@
-import React from 'react';
-import Onboarding from './Onboarding';
-import './App.css';
+import React from 'react'
+import Onboarding from './Onboarding'
 
 function Login(props) {
 	if (props.token != null) {
