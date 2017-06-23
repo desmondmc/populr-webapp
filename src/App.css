@@ -17,6 +17,25 @@ body {
     height: 300px;
 }
 
+.MessageCircleContainer {
+	display: flex;
+    justify-content: center; /* align horizontal */
+}
+
+.MessageCircle {
+	display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    border-radius: 50%; /* Circular */
+    height: 60px;
+    width: 60px;
+    padding: 15px 16px;
+    margin: 10px 0px;
+    background-color: #ffffff;
+    font-family: "helvetica neue", sans-serif;
+    color: #4cb3b2
+}
+
 button {
     background-color:rgba(0,0,0,0.0); /* Transparent */
     border: none;

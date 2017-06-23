@@ -1,7 +1,11 @@
 import React from 'react'
 
 function Message(props) {
-	return <h1>{props.text}</h1>
+	return (
+		<div className="MessageCircleContainer">
+			<div className="MessageCircle">{props.text}</div>
+		</div>
+	)
 }
 
 export default Message

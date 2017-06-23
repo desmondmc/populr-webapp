@@ -7,6 +7,7 @@ class App extends Component {
 	constructor() {
 		super()
 		store.subscribe(() => {
+			console.log("State change!")
 			console.log(store.getState())
 		})
 	}
