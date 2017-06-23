@@ -1,5 +1,6 @@
 import { updateUser, updateMessages } from '../state/Action'
 import { store } from '../index'
+import { Cookies } from '../utils/Cookies'
 
 const rootUrl = "http://populr_go_api.gzelle.co"
 
@@ -24,6 +25,8 @@ class API {
                 token:json.data.new_token,
                 id:json.data.id
             }
+
+            Cookies.saveUser(json.data.new_token, json.data.id)
 
             const action = updateUser(user)
             store.dispatch(action)
@@ -50,6 +53,8 @@ class API {
                 token:json.data.new_token,
                 id:json.data.id
             }
+
+            Cookies.saveUser(json.data.new_token, json.data.id)
 
             const action = updateUser(user)
             store.dispatch(action)
