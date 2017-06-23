@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from 'react'
-import { API } from './networking/API'
+import { API } from '../networking/API'
 
 class Onboarding extends Component {
 

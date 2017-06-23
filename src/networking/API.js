@@ -1,4 +1,4 @@
-import { updateToken } from '../state/Action'
+import { updateUser, updateMessages } from '../state/Action'
 import { store } from '../index'
 
 const rootUrl = "http://populr_go_api.gzelle.co"
@@ -10,22 +10,22 @@ class API {
         }
 
         const url = rootUrl + "/login"
-        const method = "POST"
         const json = {data: {"username": username, "password": password}}
 
-        HTTPRequest.send(url, method, json, (string, status) => {
-            if (status === 409) {
-                alert("Invalid username or password.")
-                return
-            } else if (status > 299) {
-                alert("Unknown error occured.")
+        HTTPRequest.post(url, json, (string, status) => {
+            const json = JSON.parse(string)
+            const error = errorMessage(json)
+            if (error != null) {
+                alert(error)
                 return
             }
 
-            const json = JSON.parse(string)
-            const token = json.data.new_token
+            const user = {
+                token:json.data.new_token,
+                id:json.data.id
+            }
 
-            const action = updateToken(token)
+            const action = updateUser(user)
             store.dispatch(action)
         })
     }
@@ -36,11 +36,41 @@ class API {
         }
 
         const url = rootUrl + "/signup"
-        const method = "POST"
         const json = {data: {"username": username, "password": password}}
 
-        HTTPRequest.send(url,method,json, (response) => {
+        HTTPRequest.post(url, json, (string, status) => {
+            const json = JSON.parse(string)
+            const error = errorMessage(json)
+            if (error != null) {
+                alert(error)
+                return
+            }
 
+            const user = {
+                token:json.data.new_token,
+                id:json.data.id
+            }
+
+            const action = updateUser(user)
+            store.dispatch(action)
+        })
+    }
+
+    static loadMessages() {
+        const url = rootUrl + "/messages"
+
+        HTTPRequest.get(url, (string, status) => {
+            const json = JSON.parse(string)
+            const error = errorMessage(json)
+            if (error != null) {
+                alert(error)
+                return
+            }
+
+            const messages = json.data
+
+            const action = updateMessages(messages)
+            store.dispatch(action)
         })
     }
 }
@@ -49,15 +79,45 @@ export { API }
 
 // Private
 
+function errorMessage(json) {
+    if (json === undefined) {
+        return "Unknown error occured."
+    } else if (json.errors != null) {
+        let error = json.errors[0]
+        return error.title
+    } else {
+        return null
+    }
+}
+
 class HTTPRequest {
-    static send(url, method, json, resultCallback) {
+    static post(url, json, resultCallback) {
         const http = new XMLHttpRequest()
-        http.open(method, url, true)
+        http.open("POST", url, true)
         http.setRequestHeader('Accept', 'application/vnd.api+json')
         http.setRequestHeader('Content-Type', 'application/vnd.api+json')
 
         const jsonData = JSON.stringify(json)
         http.send(jsonData)
+
+        http.onreadystatechange = () => {
+            if(http.readyState === 4/*Done*/) {
+                resultCallback(http.responseText, http.status)
+            }
+        }
+    }
+
+    static get(url, resultCallback) {
+        const http = new XMLHttpRequest()
+        const user = store.getState().user
+
+        http.open("GET", url, true)
+        http.setRequestHeader('Accept', 'application/vnd.api+json')
+        http.setRequestHeader('Content-Type', 'application/vnd.api+json')
+        http.setRequestHeader('x-key', user.id)
+        http.setRequestHeader('new-token', user.token)
+
+        http.send()
 
         http.onreadystatechange = () => {
             if(http.readyState === 4/*Done*/) {

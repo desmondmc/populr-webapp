@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
-import Login from '../components/Login'
+import Loggedin from '../components/Loggedin'
 
 const mapStateToProps = state => {
-  	return { user:state.user }
+  	return { messages:state.messages }
 }
 
 const LoginContainer = connect(
 	mapStateToProps
-)(Login)
+)(Loggedin)
 
 export default LoginContainer
