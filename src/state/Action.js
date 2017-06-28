@@ -16,4 +16,23 @@ const updateMessages = (messages) => {
     }
 }
 
-export { updateUser, updateMessages }
+const playMessage = (message) => {
+    return {
+        type: 'PLAY_MESSAGE',
+        messageToPlay: message
+    }
+}
+
+const dismissMessage = () => {
+    return {
+        type: 'PLAY_MESSAGE',
+        messageToPlay: null
+    }
+}
+
+export { 
+	updateUser, 
+	updateMessages, 
+	playMessage, 
+	dismissMessage
+}

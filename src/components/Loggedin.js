@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { updateUser } from '../state/Action'
 import { store } from '../index'
 import { Cookies } from '../utils/Cookies'
-import MessageList from './MessageList'
+import MessageListContainer from '../containers/MessageListContainer'
 
 
 class Loggedin extends Component {
@@ -13,7 +13,7 @@ class Loggedin extends Component {
         return (
         <div>
         	<button onClick={() => this.logout()}>Logout</button>
-        	<MessageList messages={this.props.messages}/>
+        	<MessageListContainer/>
         </div>
         );
     }

@@ -62,6 +62,8 @@ class API {
     }
 
     static loadMessages() {
+        console.log("Fetching messages!")
+
         const url = rootUrl + "/messages"
 
         HTTPRequest.get(url, (string, status) => {

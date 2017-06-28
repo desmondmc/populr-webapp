@@ -22,15 +22,26 @@ body {
     justify-content: center; /* align horizontal */
 }
 
+.SpeedMessage {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align child divs vertical */
+    font-family: "helvetica neue", sans-serif;
+    font-size: 32px;
+    color: #4cb3b2;
+    height: 300px;
+    margin-top: 50%;
+}
+
 .MessageCircle {
 	display: flex;
     justify-content: center; /* align horizontal */
     align-items: center; /* align vertical */
     border-radius: 50%; /* Circular */
-    height: 60px;
-    width: 60px;
-    padding: 15px 16px;
-    margin: 10px 0px;
+    height: 70px;
+    width: 70px;
+    margin-top: 16px;
     background-color: #ffffff;
     font-family: "helvetica neue", sans-serif;
     color: #4cb3b2

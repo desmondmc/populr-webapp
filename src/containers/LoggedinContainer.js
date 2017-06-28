@@ -5,8 +5,8 @@ const mapStateToProps = state => {
   	return { messages:state.messages }
 }
 
-const LoginContainer = connect(
+const LoggedinContainer = connect(
 	mapStateToProps
 )(Loggedin)
 
-export default LoginContainer
+export default LoggedinContainer
