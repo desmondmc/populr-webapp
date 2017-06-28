@@ -1,8 +1,7 @@
 const initialState = {
     user: null,
     messages: [],
-    messageToPlay: null,
-    wordIndex:0
+    messageToPlay: null
 };
 
 const PopulrReducer = (state = initialState, action) => {
